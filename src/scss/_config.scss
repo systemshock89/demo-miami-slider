@@ -1,0 +1,16 @@
+// IMPORT SECTION
+@import 'node_modules/normalize.css/normalize';
+@import 'node_modules/swiper/swiper.min';
+
+// FONTS LOAD SECTION
+@mixin font($fname, $fstyle, $fweight, $furl) {
+	@font-face {
+		font-family: $fname;
+		font-style: $fstyle;
+		font-weight: $fweight;
+		src: url($furl) format('woff2');
+	}
+}
+
+@include font('raleway-my', normal, 300, '../fonts/raleway-v22-cyrillic-300.woff2');
+@include font('raleway-my', normal, 900, '../fonts/raleway-v22-cyrillic-900.woff2');

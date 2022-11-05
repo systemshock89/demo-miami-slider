@@ -1,0 +1,121 @@
+.slider{
+  height: 100%;
+  transform: rotate(15deg);
+  overflow: visible; // чтобы на краях экрана при повернутом слайдере не было пустых треугольников (сверху слева и снизу справа)
+  top: 10vh;
+  &__wrapper{
+    transition: var(--transition)!important; // переопределим системную анимацию на плавную
+    will-change: transform; // чтоб параллакс не притормаживал явно укажем браузеру использовать для данной вкладки больше ресурсов
+    // тогда параметр transform будет меняться плавно
+  }
+  &__item{
+    display: flex;
+    max-height: 75vh;
+    &:before{
+      visibility: hidden;
+      opacity: 0;
+      content: '';
+      width: 300vw;
+      height: 300vh;
+
+      position: absolute;
+      top: -100vh;
+      left: -100vw;
+      transform: rotate(-15deg);
+      background-color: rgb(0 0 0 /.75 );
+      transition: opacity var(--transition);
+    }
+    &:focus-visible{
+      outline: none;
+      box-shadow: 0 10px 30px rgba(Tomato, .25);
+    }
+    &_opened{
+      z-index: 3;
+      &:before{
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  &__item2{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    transition: transform var(--transition);
+  }
+  // элемент без поворота - для корректного определения координат при клике
+  &__item-anti-rotate{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-15deg);
+  }
+  &__img{
+    width: 300%; // ширина изображения шире, чем ширина слайда
+    left: -100%; // и изображение смещается влево и располагается посередине родителя
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    transition: var(--transition)!important; // для плавного параллакса
+    will-change: transform; // чтоб параллакс не притормаживал явно укажем браузеру использовать для данной вкладки больше ресурсов
+    // тогда параметр transform будет меняться плавно
+
+    // для параллакса изображения в html у дива укажем data-swiper-parallax="20%"
+    // Но чтобы появился эффект глибины у разных слайов, задаим у первого data-swiper-parallax="20%", а у каждого второго data-swiper-parallax="30%"
+  }
+
+  &_main{
+    opacity: 0;
+    transition: opacity var(--transition);
+    &.swiper-initialized{
+      opacity: 1;
+    }
+  }
+  &_bg{
+    z-index: 0;
+    transform: rotate(-20deg);
+    top: -90vh;
+    left: -10vh;
+    opacity: .15;
+    filter: blur(120px) saturate(10) ; // сделаем элементы ярче и размоем
+    // последовательность фильтров важна!
+
+    .slider__item{
+      max-height: 100vh; // слайдер фона во всю высоту
+    }
+  }
+}
+
+.description{
+  position: absolute;
+  font-size: calc(var(--sizeindex) * .8); // 80% от sizeindex (индекс, учитывающий высоту и ширину экрана)
+  top: 20vh;
+  left: 8vw;
+  max-width: 24vw;
+  z-index: 1;
+  transition: opacity var(--transition), transform var(--transition);
+  &__logo{
+    font-size: calc(var(--sizeindex) * 3.6);
+    font-weight: 900;
+    display: inline-block;
+    background: linear-gradient(45deg, DarkMagenta, Tomato, Violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  p{
+    opacity: .9;
+    transition: transform var(--transition);
+    transition-duration: 3s;
+  }
+  // текст плавно скрывается и уезжает (абзац уезжает с запаздыванием)
+  &_hidden{
+    opacity: 0;
+    transform: translateY(5vh);
+    p{
+      transform: translateY(2vh);
+    }
+  }
+}
