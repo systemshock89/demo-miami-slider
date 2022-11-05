@@ -70,7 +70,7 @@ function slider() {
             if (e.code === 'Escape' && item.classList.contains('slider__item_opened') ) {
                 closeModal(item);
             }
-        }, {passive: true});
+        });
     }
 
     function closeModal(item){
