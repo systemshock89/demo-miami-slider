@@ -1,4 +1,4 @@
-import Swiper, {FreeMode, Mousewheel, Parallax, Controller} from 'swiper';
+import Swiper, {FreeMode, Mousewheel, Parallax, Controller, Lazy} from 'swiper';
 
 function slider() {
 
@@ -17,7 +17,8 @@ function slider() {
                 spaceBetween: 60,
             },
         },
-        modules: [FreeMode, Mousewheel, Parallax, Controller],
+        lazy: true,
+        modules: [FreeMode, Mousewheel, Parallax, Controller, Lazy],
     });
 
     // слайдер с размытием фона
@@ -26,7 +27,8 @@ function slider() {
         parallax: true,
         slidesPerView: 3.5,
         spaceBetween: 60,
-        modules: [Parallax, Controller],
+        lazy: true,
+        modules: [Parallax, Controller, Lazy],
     });
 
     sliderMain.controller.control = sliderBg; // свяжем слайдеры
@@ -51,7 +53,7 @@ function slider() {
     });
 
     function openModal(item){
-        const item2 = item.querySelector('.slider__item2');
+        const itemWrap = item.querySelector('.slider__item-wrap');
 
         item.classList.add('slider__item_opened');
 
@@ -63,7 +65,7 @@ function slider() {
         const scale = ((document.body.clientHeight + (document.body.clientHeight - itemAntiRotate.clientHeight)) / document.body.clientHeight).toFixed(2);
 
         // при клике повернем слайд в обратную сторону(ровно) и увеличим
-        item2.style.transform = `rotate(-15deg) translateX(calc(${-offsetX}px + 50vw - 50%)) translateY(calc(${-offsetY}px + 50vh - 50%)) scale(${scale})`;
+        itemWrap.style.transform = `rotate(-15deg) translateX(calc(${-offsetX}px + 50vw - 50%)) translateY(calc(${-offsetY}px + 50vh - 50%)) scale(${scale})`;
 
         // закрываем окно при нажатии на клавишу Escape
         document.addEventListener('keydown', (e) => {
@@ -74,10 +76,10 @@ function slider() {
     }
 
     function closeModal(item){
-        const item2 = item.querySelector('.slider__item2');
+        const itemWrap = item.querySelector('.slider__item-wrap');
         item.classList.remove('slider__item_opened');
         sliderMain.enable();
-        item2.style.transform = '';
+        itemWrap.style.transform = '';
     }
 
 }

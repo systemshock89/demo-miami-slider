@@ -37,7 +37,7 @@
       }
     }
   }
-  &__item2{
+  &__item-wrap{
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -87,6 +87,35 @@
       max-height: 100vh; // слайдер фона во всю высоту
     }
   }
+}
+
+.swiper-lazy-preloader {
+  @extend %spinner;
+  top: 50%;
+  left: 50%;
+  margin-top: -25px;
+  margin-left: -25px;
+  z-index: 99999;
+}
+
+@keyframes preloader-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+%spinner {
+  border: 6px solid rgba(100, 100, 100, 0.4);
+  border-top: 6px solid rgba(255, 255, 255, 0.6);
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  animation: preloader-rotate .8s infinite linear;
+  background: transparent;
+  position: absolute;
 }
 
 .description{
