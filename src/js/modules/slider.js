@@ -27,8 +27,7 @@ function slider() {
         parallax: true,
         slidesPerView: 3.5,
         spaceBetween: 60,
-        lazy: true,
-        modules: [Parallax, Controller, Lazy],
+        modules: [Parallax, Controller],
     });
 
     sliderMain.controller.control = sliderBg; // свяжем слайдеры
