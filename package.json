@@ -2,11 +2,11 @@
   "name": "Miami slider",
   "version": "1.0.0",
   "description": "",
+  "author": "System Shock",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
   "license": "ISC",
   "browserslist": [
     "last 2 chrome versions",
@@ -34,5 +34,6 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-stream": "^5.2.1"
-  }
+  },
+  "dependencies": {}
 }
