@@ -1,6 +1,6 @@
 <h1>Miami slider</h1>
 <p>Slider with parallax, neon blur background, mousewheel navigation, click to zoom slide.</p>
-<p><a href="https://systemshock89.github.io/miami-slider/">See example</a></p>
+<p><a href="https://systemshock89.github.io/demo-miami-slider/">See demo</a></p>
 
 <h2>Used features</h2>
 <ul>
